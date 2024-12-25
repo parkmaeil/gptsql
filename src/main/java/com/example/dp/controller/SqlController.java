@@ -30,8 +30,8 @@ public class SqlController {
 
     @PostMapping
     public SqlResponse sql(@RequestParam(name = "question") String question) throws IOException {
-        String schema = ddlResource.getContentAsString(Charset.defaultCharset());
-
+        String schema = ddlResource.getContentAsString(Charset.defaultCharset()); // UTF-8
+       // LLM 자동으로 select SQL이 생성
         String query = aiClient.prompt()
                 .user(userSpec -> userSpec
                         .text(sqlPromptTemplateResource)
@@ -44,6 +44,6 @@ public class SqlController {
         if (query.toLowerCase().startsWith("select")) {
             return new SqlResponse(query, jdbcTemplate.queryForList(query));
         }
-        return new SqlResponse(query, List.of());
+        return new SqlResponse(query, List.of()); // null
     }
 }

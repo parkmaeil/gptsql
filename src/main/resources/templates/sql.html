@@ -11,7 +11,7 @@
 <div class="container bg-white rounded shadow p-4">
     <h1 class="text-center mb-4">사용자 친화형 검색(GPT+SQL)</h1>
     <div class="input-group mb-3">
-        <input id="newsQuery" type="text" class="form-control" placeholder="Search for news...">
+        <input id="newsQuery" type="text" class="form-control" placeholder="Search for movies...">
         <button id="searchBtn" class="btn btn-primary">검색</button>
     </div>
     <div id="loading" class="d-none text-center my-3">
@@ -48,7 +48,7 @@
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                console.log(data); // ?
                 loading.classList.add("d-none");
 
                 // 결과가 없을 경우
